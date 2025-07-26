@@ -25,15 +25,13 @@ cd Adobe-India-Hackathon-Team-Snitchers
 ```
 ## Solution Structure
 ```
-Challenge_1a/
-├── sample_dataset/
-│   ├── outputs/         # JSON files provided as outputs.
-│   ├── pdfs/            # Input PDF files
-│   └── schema/          # Output schema definition
-│       └── output_schema.json
-├── Dockerfile           # Docker container configuration
-├── process_pdfs.py      # Sample processing script
-└── README.md            # This file
+
+└── app/
+    ├── input               # Folder containing input PDF files
+    ├── output              # Folder for storing extracted JSON outputs
+    ├── extract_pdf.py      # Main script to process and extract PDF data
+    └── Dockerfile          # Docker container configuration
+├── README.md               # Project documentation
 ```
 
 ### 3. Install Dependencies
