@@ -25,7 +25,7 @@ cd Adobe-India-Hackathon-Team-Snitchers
 ```
 ## Solution Structure
 ```
-.
+
 └── app/
     ├── input               # Folder containing input PDF files
     ├── output              # Folder for storing extracted JSON outputs
