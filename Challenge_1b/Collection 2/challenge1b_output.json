@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "input_documents": [
+      "Learn Acrobat - Create and Convert_1.pdf",
+      "Learn Acrobat - Create and Convert_2.pdf",
+      "Learn Acrobat - Edit_1.pdf",
+      "Learn Acrobat - Edit_2.pdf",
+      "Learn Acrobat - Export_1.pdf",
+      "Learn Acrobat - Export_2.pdf",
+      "Learn Acrobat - Fill and Sign.pdf",
+      "Learn Acrobat - Generative AI_1.pdf",
+      "Learn Acrobat - Generative AI_2.pdf",
+      "Learn Acrobat - Request e-signatures_1.pdf",
+      "Learn Acrobat - Request e-signatures_2.pdf",
+      "Learn Acrobat - Share_1.pdf",
+      "Learn Acrobat - Share_2.pdf",
+      "Test Your Acrobat Exporting Skills.pdf",
+      "The Ultimate PDF Sharing Checklist.pdf"
+    ],
+    "persona": "HR professional",
+    "job_to_be_done": "Create and manage fillable forms for onboarding and compliance",
+    "processing_timestamp": "2025-07-28T23:31:44.522591",
+    "total_sections_analyzed": 11594,
+    "processing_time_seconds": 2.54
+  },
+  "extracted_sections": [
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "section_title": "interactive fillable forms. Or, they intentionally design a form that you can fill in only by hand",
+      "importance_rank": 1,
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "section_title": "Creates the PDF so that it conforms to the selected ISO standard for long-term preservation of",
+      "importance_rank": 2,
+      "page_number": 21
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "section_title": "Change flat forms to fillable (Acrobat Pro)",
+      "importance_rank": 3,
+      "page_number": 12
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "section_title": "To create an interactive form, use the Prepare Forms tool. See Create a form from an existing",
+      "importance_rank": 4,
+      "page_number": 12
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "section_title": "Not all forms are fillable. Sometimes form creators don’t convert their PDFs to",
+      "importance_rank": 5,
+      "page_number": 8
+    }
+  ],
+  "subsection_analysis": [
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Content from interactive fillable forms. Or, they intentionally design a form that you can fill in only by hand",
+      "page_number": 8
+    },
+    {
+      "document": "Learn Acrobat - Create and Convert_1.pdf",
+      "refined_text": "Content from Creates the PDF so that it conforms to the selected ISO standard for long-term preservation of",
+      "page_number": 21
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Content from Change flat forms to fillable (Acrobat Pro)",
+      "page_number": 12
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Content from To create an interactive form, use the Prepare Forms tool. See Create a form from an existing",
+      "page_number": 12
+    },
+    {
+      "document": "Learn Acrobat - Fill and Sign.pdf",
+      "refined_text": "Content from Not all forms are fillable. Sometimes form creators don’t convert their PDFs to",
+      "page_number": 8
+    }
+  ]
+}

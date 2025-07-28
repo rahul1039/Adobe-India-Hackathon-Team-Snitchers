@@ -1,0 +1,11 @@
+# Core dependencies for Intelligent Document Analyst
+# Optimized for CPU-only execution, <1GB memory, <60 seconds processing
+
+# PDF processing - fast and reliable
+PyMuPDF==1.23.14
+
+# Progress tracking
+tqdm==4.66.1
+
+# Standard libraries (included with Python)
+# - os, json, time, datetime, re, glob
