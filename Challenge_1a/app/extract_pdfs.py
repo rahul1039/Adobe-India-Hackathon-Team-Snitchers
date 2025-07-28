@@ -1,5 +1,5 @@
 import os
-import regex as re  # better unicode regex support
+import regex as re
 import json
 import pdfplumber
 import pytesseract
@@ -9,7 +9,7 @@ import onnxruntime as ort
 from transformers import AutoTokenizer
 import numpy as np
 
-# ✅ Use quantized multilingual MiniLM model
+# Pushed to GitHub LFS
 MODEL_PATH = "./model/minilm-multilingual/model-quant.onnx"
 TOKENIZER_PATH = "./model/minilm-multilingual"
 
