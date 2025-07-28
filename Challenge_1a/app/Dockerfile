@@ -12,8 +12,8 @@ RUN pip install --no-cache-dir \
     pdfplumber pytesseract pdf2image onnxruntime transformers
 
 # Copy ONNX model + tokenizer + script
-COPY ./model/minilm/minilm.onnx ./model/minilm/minilm.onnx
-COPY ./model/minilm/tokenizer ./model/minilm/tokenizer
+COPY ./model/minilm-multilingual/model.onnx ./model/minilm-multilingual/model.onnx
+COPY ./model/minilm-multilingual/tokenizer ./model/minilm-multilingual/tokenizer
 COPY extract_pdfs.py ./extract_pdfs.py
 
 CMD ["python", "extract_pdfs.py"]

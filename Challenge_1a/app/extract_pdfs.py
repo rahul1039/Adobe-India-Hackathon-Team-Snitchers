@@ -1,5 +1,5 @@
 import os
-import re
+import regex as re
 import json
 import pdfplumber
 import pytesseract
@@ -10,8 +10,8 @@ from transformers import AutoTokenizer
 import numpy as np
 
 # Load MiniLM ONNX model
-MODEL_PATH = "./model/minilm/minilm.onnx"
-TOKENIZER_PATH = "./model/minilm/tokenizer"
+MODEL_PATH = "./model/minilm-multilingual/model.onnx"
+TOKENIZER_PATH = "./model/minilm-multilingual/tokenizer"
 
 tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_PATH, local_files_only=True)
 session = ort.InferenceSession(MODEL_PATH, providers=["CPUExecutionProvider"])
@@ -69,8 +69,8 @@ def extract_outline_from_toc(pdf_path):
                 if re.search(r"\.{2,}\s*\d+$", line):
                     merged_lines.append((buffer + " " + line).strip())
                     buffer = ""
-                elif re.search(r"[A-Za-z]{3,}", line):
-                    buffer += (" " + line).strip()
+                elif re.search(r"\p{L}{2,}", line):
+                      buffer += (" " + line).strip()
 
     for full_line in merged_lines:
         m = re.match(r"^(.+?)\s+\.{2,}\s*(\d+)$", full_line)
@@ -85,8 +85,8 @@ def extract_outline_from_toc(pdf_path):
         num_match = re.match(r"^(\d+(?:\.\d+)*)", heading_text)
         if num_match:
             level = f"H{num_match.group(1).count('.') + 1}"
-        elif heading_text.istitle() or heading_text.isupper():
-            level = "H1"
+        elif len(heading_text) <= 15:
+            level = "H1"  # Short headings → H1
         else:
             level = "H2"
 
@@ -160,7 +160,7 @@ def fix_outline_for_last_text(pdf_path, outline):
         except Exception:
             return outline
 
-        data = pytesseract.image_to_data(images[0], output_type=Output.DICT)
+        data = pytesseract.image_to_data(images[0], lang="jpn+eng", output_type=Output.DICT)
         words = [data["text"][i] for i in range(len(data["text"])) if data["text"][i].strip()]
 
         for i, w in enumerate(words):

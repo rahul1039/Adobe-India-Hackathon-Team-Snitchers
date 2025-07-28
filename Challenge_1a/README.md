@@ -40,6 +40,19 @@ cd Adobe-India-Hackathon-Team-Snitchers
 python extract_pdfs.py
 ```
 
+## Run below commands to build and run the docker image:
+
+### This will build the docker image of our application
+a.) docker build --platform linux/amd64 -t rahul1039/export_pdf_repo .
+
+### This will mount the local folders and run the docker image as a container
+b.) docker run --rm -v "$(pwd)/input:/app/input:ro" -v "$(pwd)/output/rahul1039_export_pdf_repo:/app/output" --network none rahul1039/export_pdf_repo
+
+---
+
+### Please find the Docker Hub repository:
+https://hub.docker.com/repository/docker/rahul1039/export_pdf_repo/general
+
 ---
 
 ## 📑 Output Format
