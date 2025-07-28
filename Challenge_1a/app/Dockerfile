@@ -11,9 +11,8 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --no-cache-dir \
     pdfplumber pytesseract pdf2image onnxruntime transformers
 
-# Copy ONNX model + tokenizer + script
-COPY ./model/minilm-multilingual/model.onnx ./model/minilm-multilingual/model.onnx
-COPY ./model/minilm-multilingual/tokenizer ./model/minilm-multilingual/tokenizer
+# Copy quantized ONNX model + tokenizer + script
+COPY ./model/minilm-multilingual ./model/minilm-multilingual
 COPY extract_pdfs.py ./extract_pdfs.py
 
 CMD ["python", "extract_pdfs.py"]

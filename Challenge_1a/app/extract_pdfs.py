@@ -1,5 +1,5 @@
 import os
-import regex as re
+import regex as re  # better unicode regex support
 import json
 import pdfplumber
 import pytesseract
@@ -9,9 +9,9 @@ import onnxruntime as ort
 from transformers import AutoTokenizer
 import numpy as np
 
-# Load MiniLM ONNX model
-MODEL_PATH = "./model/minilm-multilingual/model.onnx"
-TOKENIZER_PATH = "./model/minilm-multilingual/tokenizer"
+# ✅ Use quantized multilingual MiniLM model
+MODEL_PATH = "./model/minilm-multilingual/model-quant.onnx"
+TOKENIZER_PATH = "./model/minilm-multilingual"
 
 tokenizer = AutoTokenizer.from_pretrained(TOKENIZER_PATH, local_files_only=True)
 session = ort.InferenceSession(MODEL_PATH, providers=["CPUExecutionProvider"])
@@ -70,7 +70,7 @@ def extract_outline_from_toc(pdf_path):
                     merged_lines.append((buffer + " " + line).strip())
                     buffer = ""
                 elif re.search(r"\p{L}{2,}", line):
-                      buffer += (" " + line).strip()
+                    buffer += (" " + line).strip()
 
     for full_line in merged_lines:
         m = re.match(r"^(.+?)\s+\.{2,}\s*(\d+)$", full_line)
@@ -86,7 +86,7 @@ def extract_outline_from_toc(pdf_path):
         if num_match:
             level = f"H{num_match.group(1).count('.') + 1}"
         elif len(heading_text) <= 15:
-            level = "H1"  # Short headings → H1
+            level = "H1"  # short headings → H1
         else:
             level = "H2"
 
@@ -147,8 +147,7 @@ def deduplicate_outline(outline):
         sims = np.dot(embeddings[:i], embeddings[i]) / (
             np.linalg.norm(embeddings[:i], axis=1) * np.linalg.norm(embeddings[i])
         )
-        # ✅ Only remove if similarity is extremely high (>0.95)
-        if sims.max() < 0.95:
+        if sims.max() < 0.95:  # keep only non-duplicate headings
             final_outline.append(outline[i])
 
     return final_outline
@@ -180,7 +179,7 @@ def process_pdf(pdf_path):
 
     outline = extract_outline_from_toc(pdf_path) or extract_fallback_headings(pdf_path)
     outline = add_missing_headings(pdf_path, outline)
-    outline = deduplicate_outline(outline)  # ✅ deduplication using MiniLM
+    outline = deduplicate_outline(outline)
 
     if not title or (outline and len(outline[0]["text"].strip()) < 10):
         outline = fix_outline_for_last_text(pdf_path, outline)
